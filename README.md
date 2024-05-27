@@ -17,7 +17,7 @@ This is a React single-page application that displays weather information for a 
 
 To get started with the Weather App, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/weather-app.git`
+1. Clone the repository: `git clone https://github.com/lyzboy/weather-app.git`
 2. Install dependencies: `npm install`
 3. Obtain an API key from [OpenWeatherMap](https://openweathermap.org/) by signing up for an account
 4. Create a `.env` file in the root directory of the project and add your API key: `REACT_APP_API_KEY=your-api-key`
