@@ -1,0 +1,23 @@
+@import "../../sass/common";
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    background-color: map-get($color-theme, "primary");
+}
+
+.header__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    flex-shrink: 0; /* Prevent the title from shrinking */
+    margin-left: 2rem;
+    color: map-get($color-theme, "light");
+}
+
+.header__searchBar {
+    width: 100%;
+    flex-grow: 0; /* Prevent the search bar from growing */
+}
