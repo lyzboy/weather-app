@@ -6,9 +6,8 @@
     background-color: map-get($color-theme, "light");
     padding: 1rem;
     border-radius: 10px;
-    min-width: 15rem;
-    width: 40rem;
-    max-width: 100%;
+
+    width: 50%;
     margin-right: 1rem;
     height: 4rem;
     color: map-get($color-theme, "primary");

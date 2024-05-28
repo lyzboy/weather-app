@@ -3,13 +3,14 @@
 .header {
     display: flex;
     align-items: center;
+    flex-direction: row;
     padding: 20px 0;
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
     background-color: map-get($color-theme, "primary");
 }
 
-.header__title {
+.title {
     font-size: 2.5rem;
     font-weight: 700;
     flex-shrink: 0; /* Prevent the title from shrinking */
@@ -17,7 +18,19 @@
     color: map-get($color-theme, "light");
 }
 
-.header__searchBar {
+.searchBar {
     width: 100%;
     flex-grow: 0; /* Prevent the search bar from growing */
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 0;
+        padding-bottom: 2rem;
+    }
+    .title {
+        margin-left: 0rem;
+        margin: 1rem auto;
+    }
 }

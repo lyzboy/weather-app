@@ -5,8 +5,8 @@ import styles from "./Header.module.scss";
 const Header = () => {
     return (
         <div className={styles.header}>
-            <p className={styles.header__title}>Weather App</p>
-            <SearchBarContainer parentClass={styles.header__searchBar} />
+            <p className={styles.title}>Weather App</p>
+            <SearchBarContainer parentClass={styles.searchBar} />
         </div>
     );
 };
