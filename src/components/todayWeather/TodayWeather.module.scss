@@ -1,0 +1,26 @@
+@import "../../sass/common";
+
+.today {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: map-get($color-theme, "dark");
+
+    h2 {
+        font-size: 6rem;
+        font-weight: 700;
+    }
+}
+
+.today__data {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 1rem;
+
+    p {
+        font-size: 1.4rem;
+    }
+}

@@ -8,36 +8,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     h2 {
         font-size: 2.4rem;
     }
 }
 
-.today {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: map-get($color-theme, "dark");
 
-    h2 {
-        font-size: 6rem;
-        font-weight: 700;
-    }
-}
-
-.today__data {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 1rem;
-
-    p {
-        font-size: 1.4rem;
-    }
-}
 
 .forecast {
     display: flex;
@@ -47,26 +24,4 @@
     margin-top: 1rem;
     margin-bottom: 2rem;
     gap: 2rem;
-}
-
-.forecast__item {
-    display: flex;
-    flex-direction: column;
-    place-items: center center;
-    color: map-get($color-theme, "dark");
-    border: solid 2px map-get($color-theme, "dark" );
-    border-radius: 10px;
-
-    h3 {
-        font-size: 4rem;
-    }
-}
-
-.high_low {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    gap: 1rem;
 }

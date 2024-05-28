@@ -1,0 +1,23 @@
+@import "../../sass/common";
+
+.forecast__item {
+    display: flex;
+    flex-direction: column;
+    place-items: center center;
+    color: map-get($color-theme, "dark");
+    border: solid 2px map-get($color-theme, "dark" );
+    border-radius: 10px;
+
+    h3 {
+        font-size: 4rem;
+    }
+}
+
+.high_low {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    gap: 1rem;
+}
