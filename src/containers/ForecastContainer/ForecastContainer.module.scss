@@ -1,0 +1,23 @@
+@import "../../sass/common";
+
+.forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: map-get($color-theme, "dark");
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 2rem;
+    
+}
+
+@media screen and (max-width: 768px){
+    .forecast {
+        flex-direction: column;
+    }
+}
+
+

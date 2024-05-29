@@ -1,7 +1,7 @@
 @import "../../sass/common";
 
 .weatherDisplay {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-color: map-get($color-theme, "light");
     display:flex;
@@ -12,16 +12,4 @@
     h2 {
         font-size: 2.4rem;
     }
-}
-
-
-
-.forecast {
-    display: flex;
-    flex-direction: row;
-    place-items: center center;
-    color: map-get($color-theme, "dark");
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    gap: 2rem;
 }
