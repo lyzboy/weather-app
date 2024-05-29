@@ -1,0 +1,15 @@
+@import "../../sass/common";
+
+.weatherDisplay {
+    height: 100%;
+    width: 100%;
+    background-color: map-get($color-theme, "light");
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+        font-size: 2.4rem;
+    }
+}
