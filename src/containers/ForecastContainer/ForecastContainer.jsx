@@ -1,10 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+
+import { getWeekly } from "../../services/api";
 
 import ForecastItem from "../../components/forecastItem/ForecastItem";
 
 import styles from "./ForecastContainer.module.scss";
 
-const ForecastContainer = () =>{
+const ForecastContainer = ({lat, lon}) =>{
+
+    const [forecast, setForecast] = useState([]);
+
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:4047757865.
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await getWeekly(lat, lon);
+            setForecast(response);
+            console.log(response);
+        };
+        if (lat && lon) {
+            fetchData();
+        }
+    }
+    , [lat, lon]);
+
 return (
     <div className={styles.forecast}>
         <ForecastItem 
