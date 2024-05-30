@@ -18,7 +18,7 @@ const SearchBar = ({
             <input
                 type="search"
                 value={searchTerm}
-                placeholder="Enter a: City, State or Zip Code"
+                placeholder="Enter a: City, State or Zip"
                 onChange={handleSearchChange}
                 onKeyUp={handleKeyPress}
                 className={styles.searchBar}

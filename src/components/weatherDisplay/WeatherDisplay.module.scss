@@ -13,3 +13,9 @@
         font-size: 2.4rem;
     }
 }
+
+@media screen and (max-width: 768px){
+    .weatherDisplay {
+        padding-top: 5rem;
+    }
+}

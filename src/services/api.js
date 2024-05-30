@@ -35,30 +35,74 @@ export const getDaily = async (lat, lon)=>{
         if(!lat || !lon) throw new Error("No lat or lon provided");
         const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`);
         const json = await data.json();
-        console.log(json);
         return json;
     } catch (error) {
         console.log("There has been an error retrieving the daily forecast: ", error);
     }
 }
 
-export const getWeekly = async (lat, lon)=>{
+const getWeekly = async (lat, lon)=>{
     try {
         if(!lat || !lon) throw new Error("No lat or lon provided");
-        const data = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`);
+        const data = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`);
         
         const json = await data.json();
-        console.log(json);
         return json;
     } catch (error) {
         console.log("There has been an error retrieving the weekly forecast: ", error);
     }
 }
 
-export const getHourly = async (lat, lon)=>{
+function compareIconIds(current, next) {
+    // Extract the numerical part and convert to integer
+    const currentValue = parseInt(current.slice(0, -1), 10);
+    const nextValue = parseInt(next.slice(0, -1), 10);
+    return nextValue > currentValue ? next : current;
+}
+
+export const getForecast = async (lat, lon)=>{
     try {
-        
+        if(!lat || !lon) throw new Error("No lat or lon provided");
+        const json = await getWeekly(lat, lon);
+
+        const hourlyList = json.list;
+
+        const dailyList = [];
+
+        const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        // go through each item in the hourly list
+        for(let i = 0; i < hourlyList.length; i++){
+            // get today's date
+            const todayText = dayNames[new Date().getDay()];
+            // get the day
+            const dayText = dayNames[new Date(hourlyList[i].dt * 1000).getDay()];
+            // if the dailyList array is empty, add the first day
+            if(dailyList.length === 0){
+                if(dayText !== todayText){
+                    dailyList.push({day: dayText, high: Math.floor(hourlyList[i].main.temp_max), low: Math.floor(hourlyList[i].main.temp_min), iconID: hourlyList[i].weather[0].icon});
+                }
+            } else {
+                // if the dailyList array is not empty, check if the day is the same as the last day
+                if(dailyList[dailyList.length - 1].day !== dayText){
+                    // if the day is not the same as the last day, add a new day to the dailyList array
+                    dailyList.push({day: dayText, high: Math.floor(hourlyList[i].main.temp_max), low: Math.floor(hourlyList[i].main.temp_min), iconID: hourlyList[i].weather[0].icon});
+                } else {
+                    // if the current item's temp_max is more than the last day's high, update the high
+                    if(hourlyList[i].main.temp_max > dailyList[dailyList.length - 1].high){
+                        dailyList[dailyList.length - 1].high = Math.floor(hourlyList[i].main.temp_max);
+                    }
+                    // if the current item's temp_min is less than the last day's low, update the low
+                    if(hourlyList[i].main.temp_min < dailyList[dailyList.length - 1].low){
+                        dailyList[dailyList.length - 1].low = Math.floor(hourlyList[i].main.temp_min);
+                    }
+                    dailyList[dailyList.length - 1].iconID = compareIconIds(dailyList[dailyList.length - 1].iconID, hourlyList[i].weather[0].icon);
+                }
+            }
+        }
+        return dailyList;
+
     } catch (error) {
-        
+        console.log(error);
     }
 }

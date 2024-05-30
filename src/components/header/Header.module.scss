@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding: 20px 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
     background-color: map-get($color-theme, "primary");
@@ -32,8 +32,7 @@
 @media screen and (max-width: 768px) {
     .header {
         flex-direction: column;
-        padding: 0;
-        padding-bottom: 2rem;
+        padding: 0.5rem 0;
     }
     .title {
         margin-left: 0rem;

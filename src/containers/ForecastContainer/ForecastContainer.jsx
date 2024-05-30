@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-import { getWeekly } from "../../services/api";
+import { getForecast } from "../../services/api";
 
 import ForecastItem from "../../components/forecastItem/ForecastItem";
 
@@ -13,9 +13,9 @@ const ForecastContainer = ({lat, lon}) =>{
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:4047757865.
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getWeekly(lat, lon);
-            setForecast(response);
+            const response = await getForecast(lat, lon);
             console.log(response);
+            setForecast(response);
         };
         if (lat && lon) {
             fetchData();
@@ -23,40 +23,18 @@ const ForecastContainer = ({lat, lon}) =>{
     }
     , [lat, lon]);
 
-return (
-    <div className={styles.forecast}>
-        <ForecastItem 
-            high={50}
-            low={30}
-            iconURL={"https://openweathermap.org/img/wn/10d@2x.png"}
-            day="Tuesday"
-        />
-        <ForecastItem 
-            high={50}
-            low={30}
-            iconURL={"https://openweathermap.org/img/wn/10d@2x.png"}
-            day="Tuesday"
-        />
-        <ForecastItem 
-            high={50}
-            low={30}
-            iconURL={"https://openweathermap.org/img/wn/10d@2x.png"}
-            day="Tuesday"
-        />
-        <ForecastItem 
-            high={50}
-            low={30}
-            iconURL={"https://openweathermap.org/img/wn/10d@2x.png"}
-            day="Tuesday"
-        />
-        <ForecastItem 
-            high={50}
-            low={30}
-            iconURL={"https://openweathermap.org/img/wn/10d@2x.png"}
-            day="Tuesday"
-        />
-    </div>
-);
+    return (
+        <div className={styles.forecast}>
+            {forecast.map((elem) => {
+                    return <ForecastItem 
+                        high={elem.high}
+                        low={elem.low}
+                        iconURL={`https://openweathermap.org/img/wn/${elem.iconID}@2x.png`}
+                        day={elem.day}
+                    />
+            })}
+        </div>
+    );
 };
 
 export default ForecastContainer;
