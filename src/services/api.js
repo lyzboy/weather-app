@@ -54,6 +54,10 @@ const getWeekly = async (lat, lon)=>{
 }
 
 function compareIconIds(current, next) {
+    //if icon id has an "n" replace it with "d"
+    if(current.includes("n")) current = current.replace("n", "d");
+    //if icon id has an "n" replace it with "d"
+    if(next.includes("n")) next = next.replace("n", "d");
     // Extract the numerical part and convert to integer
     const currentValue = parseInt(current.slice(0, -1), 10);
     const nextValue = parseInt(next.slice(0, -1), 10);

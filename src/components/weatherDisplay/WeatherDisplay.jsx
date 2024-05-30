@@ -27,7 +27,10 @@ const WeatherDisplay = () => {
                     />
                     </>
                     ) : (
-                        <p>Please enter a location: City, State or Zip Code.</p>
+                        <>
+                        <p>To view weather data, please enter a location.</p>
+                        <p>If using City, State...a state must be provided.</p>
+                        </>
                     )}
             </div>
 
